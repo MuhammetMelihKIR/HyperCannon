@@ -1,17 +1,24 @@
 ﻿ using Runtime.Scripts;
+ using RUNTIME.Scripts.Interface;
 
- public class YellowEnemy : Enemy
+ public class YellowEnemy : Enemy,IDamageableYellowBullet,IDamageableBlueBullet
  {
      private void OnEnable()
      {
-         YellowBullet.OnYellowBulletTrigger += IncreaseHp;
          GameManager.OnLevelUpYellowButton += LevelUp;
      }
 
      private void OnDisable()
      {
-         YellowBullet.OnYellowBulletTrigger -= IncreaseHp;
          GameManager.OnLevelUpYellowButton -= LevelUp;
+     }
+     public void BlueBulletDamage()
+     {
+         IncreaseHp();
+     }
+     public void YellowBulletDamage()
+     {
+         IncreaseHp();
      }
      private void IncreaseHp()
      {
@@ -23,4 +30,6 @@
              OnEnemyDie?.Invoke();
          }
      }
+     
+     
  }

@@ -1,11 +1,11 @@
 ﻿using System;
 using Runtime.Scripts;
+using RUNTIME.Scripts.Interface;
 using UnityEngine;
 
 public class BlueBullet : Bullet
 {
-   public static Action OnBlueBulletTrigger;
-
+   
    private void OnTriggerEnter(Collider other)
    {
       BlueBulletTrigger(other);
@@ -13,14 +13,21 @@ public class BlueBullet : Bullet
 
    private void BlueBulletTrigger(Collider other)
    {
-      if (other.CompareTag("BlueEnemy"))
+      if (other.CompareTag("BlueEnemy")|| other.CompareTag("RedEnemy") || other.CompareTag("YellowEnemy"))
       {
-         OnBlueBulletTrigger?.Invoke();
+         IDamageableBlueBullet damageableBlueBullet = other.GetComponent<IDamageableBlueBullet>();
+         if (damageableBlueBullet!=null)
+         {
+            damageableBlueBullet.BlueBulletDamage();
+         }
+         ObjectPool.Instance.ReturnObjectToPool(1,gameObject);
+         
+      }
+      else if (other.CompareTag("Wall") || other.CompareTag("GameOver"))
+      {
          ObjectPool.Instance.ReturnObjectToPool(1,gameObject);
       }
-      else
-      {
-         ObjectPool.Instance.ReturnObjectToPool(1,gameObject);
-      }
+     
+     
    }
 }

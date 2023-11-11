@@ -7,14 +7,15 @@ using UnityEngine;
  {
      protected GameObject TargetEnemy;
      protected Enemy[] AllEnemies;
-     private float _attackSpeed = 0.5f;
-
+     protected float _attackSpeed = 0.5f;
+     
      protected int BulletCount;
 
 
      private void Start()
      {
-        StartCoroutine(BulletFire());
+         StartCoroutine(BulletFire());
+         
      }
   
 
@@ -22,7 +23,7 @@ using UnityEngine;
      {
          FindClosestEnemy();
          LookAtEnemy();
-         
+        
      }
 
      protected void FindClosestEnemy()
@@ -31,17 +32,19 @@ using UnityEngine;
            
          foreach (Enemy currentEnemy in AllEnemies)
          { 
+             
              float distanceToEnemy = (currentEnemy.transform.position - this.transform.position).sqrMagnitude;
              if (distanceToEnemy < distanceClosestEnemy)
              {
                  distanceClosestEnemy = distanceToEnemy;
 
                  TargetEnemy = currentEnemy.gameObject;
+                
              }
-             
+
          }
          
-         Debug.DrawLine(this.transform.position,TargetEnemy.transform.position,Color.blue);
+        Debug.DrawLine(this.transform.position,TargetEnemy.transform.position,Color.blue);
             
      }
         
@@ -57,7 +60,7 @@ using UnityEngine;
           {
              ObjectPool.Instance.GetObjectFromPool(BulletCount, transform.position, Quaternion.identity);
              yield return new WaitForSeconds(_attackSpeed);
-              
+            
           }
         
       }

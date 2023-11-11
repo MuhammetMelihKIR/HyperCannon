@@ -1,22 +1,25 @@
 ﻿using UnityEngine;
 using System;
 using Runtime.Scripts;
+using RUNTIME.Scripts.Interface;
 
-
-public class BlueEnemy : Enemy
+public class BlueEnemy : Enemy,IDamageableBlueBullet
 {
     private void OnEnable()
     {
-        BlueBullet.OnBlueBulletTrigger += IncreaseHp;
         GameManager.OnLevelUpBlueButton += LevelUp;
     }
 
     private void OnDisable()
     {
-        BlueBullet.OnBlueBulletTrigger -= IncreaseHp;
         GameManager.OnLevelUpBlueButton -= LevelUp;
     }
-
+    
+    public void BlueBulletDamage()
+    {
+        IncreaseHp();
+    }
+    
     private void IncreaseHp()
     {
         HpCount -= DamageCount; 

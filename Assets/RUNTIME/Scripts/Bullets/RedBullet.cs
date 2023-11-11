@@ -1,10 +1,10 @@
 ﻿using System;
 using Runtime.Scripts;
+using RUNTIME.Scripts.Interface;
 using UnityEngine;
 public class RedBullet : Bullet
 {
-    public static Action OnRedBulletTrigger;
-
+    
     private void OnTriggerEnter(Collider other)
     {
         RedBulletTrigger(other);
@@ -14,11 +14,15 @@ public class RedBullet : Bullet
     {
         if (other.CompareTag("RedEnemy"))
         {
-            OnRedBulletTrigger?.Invoke();
+            IDamageableRedBullet damageableRedBullet = other.GetComponent<IDamageableRedBullet>();
+            if (damageableRedBullet!=null)
+            {
+                damageableRedBullet.RedBulletDamage();
+            }
             ObjectPool.Instance.ReturnObjectToPool(0,gameObject);
         }
-      
-        else
+       
+        else if (other.CompareTag("Wall") || other.CompareTag("GameOver") || other.CompareTag("YellowEnemy") || other.CompareTag("BlueEnemy") || other.CompareTag("RedEnemy"))
         {
             ObjectPool.Instance.ReturnObjectToPool(0,gameObject);
         }

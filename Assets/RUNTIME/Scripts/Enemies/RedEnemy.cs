@@ -1,18 +1,27 @@
 ﻿using Runtime.Scripts;
+using RUNTIME.Scripts.Interface;
 using UnityEngine;
 
-public class RedEnemy :Enemy
+public class RedEnemy :Enemy,IDamageableRedBullet,IDamageableBlueBullet
 { 
     private void OnEnable()
     {
-        RedBullet.OnRedBulletTrigger += IncreaseHp;
+        
         GameManager.OnLevelUpRedButton += LevelUp;
     }
 
     private void OnDisable()
     {
-        RedBullet.OnRedBulletTrigger -= IncreaseHp;
         GameManager.OnLevelUpRedButton -= LevelUp;
+    }
+
+    public void BlueBulletDamage()
+    {
+        IncreaseHp();
+    }
+    public void RedBulletDamage()
+    {
+        IncreaseHp();
     }
     private void IncreaseHp()
     {

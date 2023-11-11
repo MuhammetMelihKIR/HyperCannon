@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System;
 using Runtime.Scripts;
+using RUNTIME.Scripts.Interface;
 
 public class YellowBullet : Bullet
  {
-     public static Action OnYellowBulletTrigger;
-
+    
      private void OnTriggerEnter(Collider other)
      {
          YellowBulletTrigger(other);
@@ -15,11 +15,15 @@ public class YellowBullet : Bullet
      {
          if (other.CompareTag("YellowEnemy"))
          {
-             OnYellowBulletTrigger?.Invoke();
+             IDamageableYellowBullet damageableYellowBullet = other.GetComponent<IDamageableYellowBullet>();
+             if (damageableYellowBullet!=null)
+             {
+                 damageableYellowBullet.YellowBulletDamage();
+             }
              ObjectPool.Instance.ReturnObjectToPool(2,gameObject);
          }
         
-         else 
+         else if (other.CompareTag("Wall") || other.CompareTag("GameOver") || other.CompareTag("YellowEnemy") || other.CompareTag("BlueEnemy") || other.CompareTag("RedEnemy"))
          {
              ObjectPool.Instance.ReturnObjectToPool(2,gameObject);
          }
