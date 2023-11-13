@@ -13,8 +13,14 @@ public class Bullet : MonoBehaviour
         
     }
 
-    private void FixedUpdate()
+    private void Start()
     {
         _rigidbody.velocity = cannon.transform.forward * BulletSpeed;
+        
+    }
+
+    private void FixedUpdate()
+    {
+        
     }
 }

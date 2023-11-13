@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using Runtime.Scripts;
-using Unity.VisualScripting;
+﻿
 using UnityEngine;
 
 public class BlueCannon : Cannon
@@ -14,9 +11,7 @@ public class BlueCannon : Cannon
 
     private void Update()
      {
-         AllEnemies = GameObject.FindObjectsOfType<BlueEnemy>();
+         AllEnemies = GameObject.FindObjectsOfType<Enemy>();
      }
      
-     
-
 }

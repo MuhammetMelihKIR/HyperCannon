@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using Runtime.Scripts;
+﻿
 using UnityEngine;
 
 public class RedCannon : Cannon
