@@ -13,27 +13,29 @@ public enum GameState
 }
 public class GameManager : MonoBehaviour
 {
-    
     public static GameManager Instance;
+
     public static Action<GameState> OnGameStateChanged;
-    
     public static Action OnLevelUpBlueButton;
     public static Action OnLevelUpYellowButton;
     public static Action OnLevelUpRedButton;
 
     private int _gameLevelCount;
+    private int _levelGoalCount;
+    private int _enemiesKillsCount;
+    private int _goldCount;
 
-    
+    [Header("BUTTONS")]
     private int _redButtonLevelCount = 1;
     private int _blueButtonLevelCount = 1;
     private int _yellowButtonLevelCount=1;
-
-    private int _goldCount = 100;
+    
     private int _redButtonGoldCount = 1;
     private int _blueButtonGoldCount = 1;
     private int _yellowButtonGoldCount = 1;
-   
-    public GameState gameState = GameState.ReadyToStartGame;
+
+
+    public GameState gameState;
 
     private void Awake()
     {
@@ -44,8 +46,46 @@ public class GameManager : MonoBehaviour
         Init();
     }
 
+    private void Start()
+    {
+        UpdateGameState(GameState.ReadyToStartGame);
+    }
+
+    public void UpdateGameState(GameState newState)
+    {
+        gameState = newState;
+        switch (newState)
+        {
+            case GameState.ReadyToStartGame:
+                break;
+            case GameState.InGame:
+                break;
+            case GameState.Win:
+                break;
+            case GameState.Lose:
+                break;
+            
+        }
+        OnGameStateChanged?.Invoke(newState);
+    }
+    void OnEnable()
+    {
+       
+        Enemy.OnEnemyDie += OnEnemiesKilled;
+    }
+
+    void OnDisable()
+    {
+        Enemy.OnEnemyDie -= OnEnemiesKilled;
+    }
+
+    
+   
     private void Init()
     {
+        _gameLevelCount = 1;
+        _levelGoalCount = (50 * _gameLevelCount);
+        UIManager.Instance.enemiesKillsCountText.text = _enemiesKillsCount + " / " + (_levelGoalCount).ToString();
         UIManager.Instance.redButtonGoldText.text = _redButtonGoldCount.ToString();
         UIManager.Instance.redButtonLevelText.text = "LVL- " + _redButtonLevelCount.ToString(); 
         UIManager.Instance.blueButtonGoldText.text = _blueButtonGoldCount.ToString();
@@ -53,41 +93,21 @@ public class GameManager : MonoBehaviour
         UIManager.Instance.yellowButtonGoldText.text = _yellowButtonGoldCount.ToString();
         UIManager.Instance.yellowButtonLevelText.text = "LVL- " + _yellowButtonLevelCount.ToString();
     }
-
-    void OnEnable()
-    {
-        OnGameStateChanged += SetGameState;
-        Enemy.OnEnemyDie += MainGoldTextUpdate;
-    }
-
-    void OnDisable()
-    {
-        OnGameStateChanged -= SetGameState;
-        Enemy.OnEnemyDie -= MainGoldTextUpdate;
-    }
-
-    void Start()
-    {
-        OnGameStateChanged.Invoke(gameState);
-    }
     
-    public bool IsState(GameState state)
+    private void OnEnemiesKilled()
     {
-        return gameState == state;
-    }
-   
-    private void SetGameState(GameState state)
-    {
-        gameState = state;
-    }
-   
-    private void MainGoldTextUpdate()
-    {
-        _goldCount++;
-       UIManager.Instance. goldText.text = _goldCount.ToString();
-        
+        _goldCount++; 
+        UIManager.Instance. goldText.text = _goldCount.ToString();
+        _enemiesKillsCount++;
+        UIManager.Instance.enemiesKillsCountText.text = _enemiesKillsCount + " / " + (_levelGoalCount).ToString();
+
     }
 
+    public void StartButton()
+    {
+        UIManager.Instance.StartButton();
+        gameState = GameState.InGame;
+    }
     public void RedButtonGoldCountUpdate()
     {
         if (_goldCount>=_redButtonGoldCount)

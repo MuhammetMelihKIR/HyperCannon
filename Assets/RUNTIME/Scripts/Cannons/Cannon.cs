@@ -6,26 +6,21 @@ using UnityEngine;
  {
      protected GameObject TargetEnemy;
      protected Enemy[] AllEnemies;
-     protected float _attackSpeed = 0.5f;
-     
      protected int BulletCount;
+     private float _currentTime;
 
-
-     private void Start()
-     {
-         StartCoroutine(BulletFire());
-         
-     }
-  
-
+    
      private void FixedUpdate()
      {
-         FindClosestEnemy();
-         LookAtEnemy();
-        
+         if (GameManager.Instance.gameState == GameState.InGame)
+         {
+             FindClosestEnemy();
+             LookAtEnemy();
+             SpawnBulletsTimer();
+         }
+         
      }
-
-     protected void FindClosestEnemy()
+     private void FindClosestEnemy()
      { 
          float distanceClosestEnemy = Mathf.Infinity;
            
@@ -47,21 +42,43 @@ using UnityEngine;
             
      }
         
-      protected void LookAtEnemy()
+      private void LookAtEnemy()
       {
           transform.LookAt(TargetEnemy.transform.position);
           
       }
-      
-      private IEnumerator BulletFire()
+
+      private void SpawnBulletsTimer()
       {
-          while (true)
+          if (TargetEnemy.gameObject.activeSelf)
           {
-             ObjectPool.Instance.GetObjectFromPool(BulletCount, transform.position, Quaternion.identity);
-             yield return new WaitForSeconds(_attackSpeed);
+             _currentTime -= Time.deltaTime;
+
+              if (_currentTime <= 0)
+              {
+                  SpawnBullets();
+                  _currentTime = 0.5f; 
+              }
+          }
+      }
+
+      private void SpawnBullets()
+      {
+          ObjectPool.Instance.GetObjectFromPool(BulletCount, transform.position, Quaternion.identity);
+      }
+
+
+     /*   private IEnumerator BulletFire()
+      {
+          while (true )
+          {
+              if (TargetEnemy.gameObject.activeSelf)
+              {
+                  ObjectPool.Instance.GetObjectFromPool(BulletCount, transform.position, Quaternion.identity);
+                  yield return new WaitForSeconds(AttackSpeed);
+              }
             
           }
-        
-      }
-        
+     }
+      */
  }

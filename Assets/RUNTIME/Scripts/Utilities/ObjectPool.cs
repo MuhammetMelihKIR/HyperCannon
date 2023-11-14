@@ -60,7 +60,6 @@ namespace Runtime.Scripts
                 obj.transform.position = position;
                 obj.transform.rotation = rotation;
                 obj.SetActive(true);
-                obj.transform.rotation=Quaternion.identity;
                 return obj;
             }
         }
@@ -73,8 +72,7 @@ namespace Runtime.Scripts
             }
             obj.SetActive(false);
             objectQueues[objectType].Enqueue(obj);
-            obj.transform.rotation=Quaternion.identity;
-            
+           
         }
         
     }

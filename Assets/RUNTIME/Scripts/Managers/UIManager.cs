@@ -9,6 +9,15 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance;
     
     public TextMeshProUGUI goldText;
+
+    public TextMeshProUGUI enemiesKillsCountText;
+    
+    [Header("PANELS")] 
+    public GameObject readyToStartPanel;
+    public GameObject inGamePanel;
+    public GameObject losePanel;
+    public GameObject winPanel;
+    
     
     [Header("BUTTON LEVEL TEXT")]
     public TextMeshProUGUI redButtonLevelText;
@@ -25,6 +34,23 @@ public class UIManager : MonoBehaviour
         {
             Instance = this;
         }
+        Init();
     }
-   
+
+    private void Init()
+    {
+        inGamePanel.SetActive(false);
+        readyToStartPanel.SetActive(true);
+        losePanel.SetActive(false);
+        winPanel.SetActive(false);
+    }
+    public void StartButton()
+    {
+        inGamePanel.SetActive(true);
+        readyToStartPanel.SetActive(false);
+        losePanel.SetActive(false);
+        winPanel.SetActive(false);
+        
+    }
+    
 }

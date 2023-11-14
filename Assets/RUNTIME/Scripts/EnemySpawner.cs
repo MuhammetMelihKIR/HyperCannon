@@ -22,21 +22,14 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
-        // Zamanlayıcıyı güncelle
-        currentTime -= Time.deltaTime;
-
-        // Zamanlayıcı sıfırlandığında
-        if (currentTime <= 0)
+        if (GameManager.Instance.gameState == GameState.InGame)
         {
-            // Zamanlayıcı bittiğinde yapılacak işlemleri buraya ekleyebilirsiniz
-           
-            SpawnEnemy();
-            // Zamanlayıcıyı sıfırla veya durdur
-            currentTime = 4f; // Zamanlayıcıyı sıfırlamak istiyorsanız
-            // veya
-            // currentTime = countdownTime; // Zamanlayıcıyı başlangıç değerine geri almak istiyorsanız
-            // veya
-            // Bu satırı kullanarak zamanlayıcıyı durdurabilirsiniz: currentTime = Mathf.Max(0f, currentTime);
+             currentTime -= Time.deltaTime;
+            if (currentTime <= 0)
+            {
+                SpawnEnemy();
+                currentTime = 4f;
+            }
         }
     }
     

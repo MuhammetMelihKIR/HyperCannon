@@ -28,14 +28,18 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move();
+        if (GameManager.Instance.gameState == GameState.InGame)
+        {
+            Move();
+        }
+        
     }
 
     protected void LevelUp()
     {
         DamageCount += 1;
     }
-    protected void Move()
+    private void Move()
     {
         Rigidbody.velocity = -transform.forward * MoveSpeed;
     }
