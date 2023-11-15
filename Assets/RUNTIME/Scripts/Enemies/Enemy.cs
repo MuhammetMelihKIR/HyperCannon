@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        HpCount = 5;
+        HpCount = 5555;
         DamageCount = 1;
         MoveSpeed = 2;
         HpText.text = HpCount.ToString(); 
@@ -28,11 +28,25 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (GameManager.Instance.gameState == GameState.InGame)
+        if (GameManager.Instance.IsGameState(GameState.InGame))
         {
             Move();
         }
+
+        if (GameManager.Instance.IsGameState(GameState.Lose))
+        {
+            transform.position = Vector3.zero;
+            Debug.Log("deneme");
+        }
         
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("GameOver"))
+        {
+           GameManager.OnGameStateChanged?.Invoke(GameState.Lose);
+        }
     }
 
     protected void LevelUp()
@@ -42,6 +56,7 @@ public class Enemy : MonoBehaviour
     private void Move()
     {
         Rigidbody.velocity = -transform.forward * MoveSpeed;
+       
     }
    
 }

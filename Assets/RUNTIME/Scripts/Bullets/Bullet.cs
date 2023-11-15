@@ -1,6 +1,8 @@
 ﻿using System;
 using DG.Tweening;
 using UnityEngine;
+using Random = UnityEngine.Random;
+
 public class Bullet : MonoBehaviour
 {
 
@@ -15,7 +17,7 @@ public class Bullet : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (GameManager.Instance.gameState == GameState.InGame)
+        if (GameManager.Instance.IsGameState(GameState.InGame))
         {
             _rigidbody.velocity = cannon.transform.forward * BulletSpeed;
         }

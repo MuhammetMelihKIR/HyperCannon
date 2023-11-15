@@ -12,7 +12,7 @@ using UnityEngine;
     
      private void FixedUpdate()
      {
-         if (GameManager.Instance.gameState == GameState.InGame)
+         if (GameManager.Instance.IsGameState(GameState.InGame))
          {
              FindClosestEnemy();
              LookAtEnemy();

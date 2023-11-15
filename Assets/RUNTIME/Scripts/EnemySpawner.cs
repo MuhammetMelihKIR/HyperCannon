@@ -10,25 +10,19 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private Transform _pos1;
     [SerializeField] private Transform _pos2;
     [SerializeField] private Transform _pos3;
+   
+    private float _currentTime;
 
-
-    public float countdownTime; // Zamanlayıcı başlangıç süresi (saniye)
-    private float currentTime;
-
-    void Start()
-    {
-        currentTime = countdownTime;
-    }
-
+    
     void Update()
     {
-        if (GameManager.Instance.gameState == GameState.InGame)
+        if (GameManager.Instance.IsGameState(GameState.InGame))
         {
-             currentTime -= Time.deltaTime;
-            if (currentTime <= 0)
+             _currentTime -= Time.deltaTime;
+            if (_currentTime <= 0)
             {
                 SpawnEnemy();
-                currentTime = 4f;
+                _currentTime = 4f;
             }
         }
     }

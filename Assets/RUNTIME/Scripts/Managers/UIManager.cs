@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class UIManager : MonoBehaviour
 {
@@ -34,23 +35,49 @@ public class UIManager : MonoBehaviour
         {
             Instance = this;
         }
-        Init();
+        readyToStartPanel.SetActive(CloseAllPanelExceptThis());
     }
 
-    private void Init()
+    private void OnEnable()
+    {
+        GameManager.OnGameStateChanged += UpdateUI;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnGameStateChanged -= UpdateUI;
+    }
+
+    private void UpdateUI(GameState state)
+    {
+       switch (state)
+        {
+            case GameState.ReadyToStartGame:
+                readyToStartPanel.SetActive(CloseAllPanelExceptThis());
+                break;
+            case GameState.InGame:
+                inGamePanel.SetActive(CloseAllPanelExceptThis());
+                break;
+            case GameState.Win:
+                winPanel.SetActive(CloseAllPanelExceptThis());
+                break;
+            case GameState.Lose:
+                losePanel.SetActive(CloseAllPanelExceptThis());
+                break;
+            
+        }
+       
+    }
+
+    bool CloseAllPanelExceptThis()
     {
         inGamePanel.SetActive(false);
-        readyToStartPanel.SetActive(true);
-        losePanel.SetActive(false);
-        winPanel.SetActive(false);
-    }
-    public void StartButton()
-    {
-        inGamePanel.SetActive(true);
         readyToStartPanel.SetActive(false);
         losePanel.SetActive(false);
         winPanel.SetActive(false);
-        
+
+        return true;
     }
+
     
 }
