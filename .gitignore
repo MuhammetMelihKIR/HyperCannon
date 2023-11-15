@@ -26,6 +26,10 @@
 # Visual Studio cache directory
 .vs/
 
+# file: ~/.gitignore_global
+.DS_Store
+.idea
+
 # Gradle cache directory
 .gradle/
 
