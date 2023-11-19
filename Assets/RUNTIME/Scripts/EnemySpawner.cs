@@ -1,15 +1,13 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+
 using Runtime.Scripts;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private Transform _pos1;
-    [SerializeField] private Transform _pos2;
-    [SerializeField] private Transform _pos3;
+    [SerializeField] private Transform Pos1;
+    [SerializeField] private Transform Pos2;
+    [SerializeField] private Transform Pos3;
    
     private float _currentTime;
 
@@ -34,9 +32,9 @@ public class EnemySpawner : MonoBehaviour
         int objectCount2= Random.Range(3, 6); 
         int objectCount3 = Random.Range(3, 6); 
         
-        ObjectPool.Instance.GetObjectFromPool(objectCount1, _pos1.position, Quaternion.identity);
-        ObjectPool.Instance.GetObjectFromPool(objectCount2, _pos2.position, Quaternion.identity);
-        ObjectPool.Instance.GetObjectFromPool(objectCount3, _pos3.position, Quaternion.identity);
+        ObjectPool.Instance.GetObjectFromPool(objectCount1, Pos1.position, Quaternion.identity);
+        ObjectPool.Instance.GetObjectFromPool(objectCount2, Pos2.position, Quaternion.identity);
+        ObjectPool.Instance.GetObjectFromPool(objectCount3, Pos3.position, Quaternion.identity);
         
     }
     

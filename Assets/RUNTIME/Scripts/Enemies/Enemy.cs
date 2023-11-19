@@ -1,5 +1,4 @@
 ﻿using System;
-using Runtime.Scripts;
 using TMPro;
 using UnityEngine;
 
@@ -10,7 +9,6 @@ public class Enemy : MonoBehaviour
     protected Rigidbody Rigidbody;
     protected TextMeshPro HpText;
     protected int HpCount;
-    protected int DamageCount;
     protected int MoveSpeed;
     protected void Awake()
     { 
@@ -20,10 +18,17 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        HpCount = 5555;
-        DamageCount = 1;
-        MoveSpeed = 2;
+        HpCount = GameManager.Instance.gameLevelCount * 10;
         HpText.text = HpCount.ToString(); 
+        MoveSpeed = 2;
+        
+    }
+
+    protected void ResetEnemyValues()
+    {
+        HpCount = GameManager.Instance.gameLevelCount * 10;
+        HpText.text = HpCount.ToString(); 
+        
     }
 
     private void FixedUpdate()
@@ -32,13 +37,13 @@ public class Enemy : MonoBehaviour
         {
             Move();
         }
-
-        if (GameManager.Instance.IsGameState(GameState.Lose))
-        {
-            transform.position = Vector3.zero;
-            Debug.Log("deneme");
-        }
         
+    }
+    
+    private void Move()
+    {
+        Rigidbody.velocity = -transform.forward * MoveSpeed;
+       
     }
 
     private void OnTriggerEnter(Collider other)
@@ -49,14 +54,5 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    protected void LevelUp()
-    {
-        DamageCount += 1;
-    }
-    private void Move()
-    {
-        Rigidbody.velocity = -transform.forward * MoveSpeed;
-       
-    }
    
 }

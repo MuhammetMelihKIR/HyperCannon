@@ -4,7 +4,10 @@ using RUNTIME.Scripts.Interface;
 using UnityEngine;
 public class RedBullet : Bullet
 {
-    
+    public void UpdateDamage()
+    {
+        damageCount++;
+    }
     private void OnTriggerEnter(Collider other)
     {
         RedBulletTrigger(other);

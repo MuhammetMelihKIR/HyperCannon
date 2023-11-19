@@ -3,34 +3,30 @@ using RUNTIME.Scripts.Interface;
 using UnityEngine;
 
 public class RedEnemy :Enemy,IDamageableRedBullet,IDamageableBlueBullet
-{ 
-    private void OnEnable()
-    {
-        
-        GameManager.OnLevelUpRedButton += LevelUp;
-    }
-
-    private void OnDisable()
-    {
-        GameManager.OnLevelUpRedButton -= LevelUp;
-    }
+{
+    public RedBullet redBullet;
+    public BlueBullet blueBullet;
+    
 
     public void BlueBulletDamage()
     {
+        HpCount -= blueBullet.damageCount; 
         IncreaseHp();
     }
     public void RedBulletDamage()
     {
+        HpCount -= redBullet.damageCount; 
         IncreaseHp();
     }
     private void IncreaseHp()
     {
-        HpCount -= DamageCount; 
         HpText.text = HpCount.ToString();
         if (HpCount<=0)
         {
             ObjectPool.Instance.ReturnObjectToPool(3,gameObject);
+            ResetEnemyValues();
             OnEnemyDie?.Invoke();
         }
     }
+    
 }

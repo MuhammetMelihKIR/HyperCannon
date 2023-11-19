@@ -1,10 +1,10 @@
-﻿using System.Collections;
+﻿
 using Runtime.Scripts;
 using UnityEngine;
 
  public class Cannon : MonoBehaviour
  {
-     protected GameObject TargetEnemy;
+     public  GameObject TargetEnemy;
      protected Enemy[] AllEnemies;
      protected int BulletCount;
      private float _currentTime;

@@ -7,9 +7,15 @@
     <list default="true" id="33cb44d6-27f9-4327-9b24-a719e3a8864a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.HyperCannon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HyperCannon/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/RUNTIME/Scenes/GameScene/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RUNTIME/Scenes/GameScene/GameScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Bullets/BlueBullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Bullets/BlueBullet.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Bullets/Bullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Bullets/Bullet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Bullets/RedBullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Bullets/RedBullet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Bullets/YellowBullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Bullets/YellowBullet.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Cannons/Cannon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Cannons/Cannon.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Enemies/BlueEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Enemies/BlueEnemy.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Enemies/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Enemies/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Enemies/RedEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Enemies/RedEnemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Enemies/YellowEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Enemies/YellowEnemy.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/EnemySpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/EnemySpawner.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Managers/GameManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Managers/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Managers/UIManager.cs" afterDir="false" />
@@ -111,7 +117,10 @@
       <workItem from="1699729372198" duration="2667000" />
       <workItem from="1699873697092" duration="9936000" />
       <workItem from="1699953913430" duration="18460000" />
-      <workItem from="1700037637510" duration="13568000" />
+      <workItem from="1700037637510" duration="14166000" />
+      <workItem from="1700319518410" duration="637000" />
+      <workItem from="1700320179698" duration="4020000" />
+      <workItem from="1700395600963" duration="12972000" />
     </task>
     <servers />
   </component>

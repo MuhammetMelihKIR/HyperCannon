@@ -1,8 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using System;
-using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
+
 
 public enum GameState 
 { 
@@ -18,11 +18,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameState _gameState;
 
     public static Action<GameState> OnGameStateChanged;
-    public static Action OnLevelUpBlueButton;
-    public static Action OnLevelUpYellowButton;
-    public static Action OnLevelUpRedButton;
-
-    private int _gameLevelCount;
+  
+    public int gameLevelCount;
     private int _levelGoalCount;
     private int _enemiesKillsCount;
     private int _goldCount;
@@ -30,11 +27,15 @@ public class GameManager : MonoBehaviour
     [Header("BUTTONS")]
     private int _redButtonLevelCount = 1;
     private int _blueButtonLevelCount = 1;
-    private int _yellowButtonLevelCount=1;
+    private int _yellowButtonLevelCount= 1;
     
     private int _redButtonGoldCount = 1;
     private int _blueButtonGoldCount = 1;
     private int _yellowButtonGoldCount = 1;
+
+    public RedBullet redBullet;
+    public BlueBullet blueBullet;
+    public YellowBullet yellowBullet;
 
 
     private void SetGameState(GameState gameState)
@@ -71,8 +72,8 @@ public class GameManager : MonoBehaviour
 
     private void Init()
     {
-        _gameLevelCount = 1;
-        _levelGoalCount = (5 * _gameLevelCount);
+        gameLevelCount = 1;
+        _levelGoalCount = (50 * gameLevelCount);
         UIManager.Instance.enemiesKillsCountText.text = _enemiesKillsCount + " / " + (_levelGoalCount).ToString();
         UIManager.Instance.redButtonGoldText.text = _redButtonGoldCount.ToString();
         UIManager.Instance.redButtonLevelText.text = "LVL- " + _redButtonLevelCount.ToString(); 
@@ -80,9 +81,9 @@ public class GameManager : MonoBehaviour
         UIManager.Instance.blueButtonLevelText.text ="LVL- " +  _blueButtonLevelCount.ToString();
         UIManager.Instance.yellowButtonGoldText.text = _yellowButtonGoldCount.ToString();
         UIManager.Instance.yellowButtonLevelText.text = "LVL- " + _yellowButtonLevelCount.ToString();
+        UIManager.Instance.levelText.text = "LEVEL- " + gameLevelCount.ToString(); 
     }
-
-   
+    
     private void OnEnemiesKilled()
     {
         _goldCount++; 
@@ -97,11 +98,33 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void UpdateGameLevel()
+    {
+        gameLevelCount++;
+        _enemiesKillsCount = 0;
+        _levelGoalCount = (50 * gameLevelCount);
+        UIManager.Instance.enemiesKillsCountText.text = _enemiesKillsCount + " / " + (_levelGoalCount).ToString();
+        UIManager.Instance.levelText.text = "LEVEL- " + gameLevelCount.ToString();
+    }
+
     public void StartButton()
     {
        OnGameStateChanged?.Invoke(GameState.InGame);
        
     }
+
+    public void NextLevelButton()
+    {
+        OnGameStateChanged?.Invoke(GameState.InGame);
+        UpdateGameLevel();
+        Debug.Log(gameLevelCount);
+    }
+
+    public void RestartGameButton()
+    {
+        SceneManager.LoadScene(0);
+    }
+    
     public void RedButtonGoldCountUpdate()
     {
         if (_goldCount>=_redButtonGoldCount)
@@ -112,8 +135,9 @@ public class GameManager : MonoBehaviour
             UIManager.Instance.redButtonGoldText.text = _redButtonGoldCount.ToString();
             UIManager.Instance.redButtonLevelText.text = "LVL- " + _redButtonLevelCount.ToString();
             UIManager.Instance.goldText.text = _goldCount.ToString();
-            OnLevelUpRedButton?.Invoke();
-            
+            redBullet.UpdateDamage();
+
+
         }
        
     }
@@ -127,7 +151,7 @@ public class GameManager : MonoBehaviour
             UIManager.Instance.blueButtonGoldText.text = _blueButtonGoldCount.ToString();
             UIManager.Instance.blueButtonLevelText.text ="LVL- " +  _blueButtonLevelCount.ToString();
             UIManager.Instance.goldText.text = _goldCount.ToString();
-            OnLevelUpBlueButton?.Invoke();
+            blueBullet.UpdateDamage();
         }
         
     }
@@ -141,7 +165,8 @@ public class GameManager : MonoBehaviour
             UIManager.Instance.yellowButtonGoldText.text = _yellowButtonGoldCount.ToString();
             UIManager.Instance.yellowButtonLevelText.text = "LVL- " + _yellowButtonLevelCount.ToString();
             UIManager.Instance.goldText.text = _goldCount.ToString();
-            OnLevelUpYellowButton?.Invoke();
+            yellowBullet.UpdateDamage();
+            
         }
         
     }

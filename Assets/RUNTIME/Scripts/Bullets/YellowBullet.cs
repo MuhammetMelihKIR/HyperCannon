@@ -5,7 +5,10 @@ using RUNTIME.Scripts.Interface;
 
 public class YellowBullet : Bullet
  {
-    
+    public void UpdateDamage()
+     {
+         damageCount++;
+     }
      private void OnTriggerEnter(Collider other)
      {
          YellowBulletTrigger(other);

@@ -6,6 +6,11 @@ using UnityEngine;
 public class BlueBullet : Bullet
 {
    
+
+   public void UpdateDamage()
+   {
+      damageCount++;
+   }
    private void OnTriggerEnter(Collider other)
    {
       BlueBulletTrigger(other);
@@ -16,7 +21,7 @@ public class BlueBullet : Bullet
       if (other.CompareTag("BlueEnemy")|| other.CompareTag("RedEnemy") || other.CompareTag("YellowEnemy"))
       {
          IDamageableBlueBullet damageableBlueBullet = other.GetComponent<IDamageableBlueBullet>();
-         if (damageableBlueBullet!=null)
+         if (damageableBlueBullet != null)
          {
             damageableBlueBullet.BlueBulletDamage();
          }

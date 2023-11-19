@@ -5,28 +5,20 @@ using RUNTIME.Scripts.Interface;
 
 public class BlueEnemy : Enemy,IDamageableBlueBullet
 {
-    private void OnEnable()
-    {
-        GameManager.OnLevelUpBlueButton += LevelUp;
-    }
-
-    private void OnDisable()
-    {
-        GameManager.OnLevelUpBlueButton -= LevelUp;
-    }
-    
+    public BlueBullet blueBullet;
     public void BlueBulletDamage()
     {
         IncreaseHp();
     }
     
-    private void IncreaseHp()
+    public void IncreaseHp()
     {
-        HpCount -= DamageCount; 
+        HpCount -= blueBullet.damageCount;
         HpText.text = HpCount.ToString();
         if (HpCount<=0)
         {
             ObjectPool.Instance.ReturnObjectToPool(4,gameObject);
+            ResetEnemyValues();
             OnEnemyDie?.Invoke();
         }
     }

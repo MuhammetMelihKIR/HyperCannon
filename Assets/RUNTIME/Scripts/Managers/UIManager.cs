@@ -1,9 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+
 using TMPro;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class UIManager : MonoBehaviour
 {
@@ -12,6 +9,8 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI goldText;
 
     public TextMeshProUGUI enemiesKillsCountText;
+    public TextMeshProUGUI levelText;
+    
     
     [Header("PANELS")] 
     public GameObject readyToStartPanel;
@@ -19,11 +18,11 @@ public class UIManager : MonoBehaviour
     public GameObject losePanel;
     public GameObject winPanel;
     
-    
     [Header("BUTTON LEVEL TEXT")]
     public TextMeshProUGUI redButtonLevelText;
     public TextMeshProUGUI blueButtonLevelText;
     public TextMeshProUGUI yellowButtonLevelText;
+    
     [Header("BUTTON GOLD TEXT")]
     public TextMeshProUGUI redButtonGoldText;
     public TextMeshProUGUI blueButtonGoldText;
@@ -54,21 +53,25 @@ public class UIManager : MonoBehaviour
         {
             case GameState.ReadyToStartGame:
                 readyToStartPanel.SetActive(CloseAllPanelExceptThis());
+                
                 break;
             case GameState.InGame:
                 inGamePanel.SetActive(CloseAllPanelExceptThis());
+               
                 break;
             case GameState.Win:
                 winPanel.SetActive(CloseAllPanelExceptThis());
+               
                 break;
             case GameState.Lose:
                 losePanel.SetActive(CloseAllPanelExceptThis());
+               
                 break;
             
         }
        
     }
-
+    
     bool CloseAllPanelExceptThis()
     {
         inGamePanel.SetActive(false);
