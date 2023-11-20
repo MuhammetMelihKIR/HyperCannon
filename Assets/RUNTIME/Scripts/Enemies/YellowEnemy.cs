@@ -7,6 +7,17 @@
  {
      public YellowBullet yellowBullet;
      public BlueBullet blueBullet;
+     private void Update()
+     {
+         if (GameManager.Instance.IsGameState(GameState.Win))
+         {
+             ObjectPool.Instance.ReturnObjectToPool(5,gameObject);
+         }
+         if (GameManager.Instance.IsGameState(GameState.Lose))
+         {
+             ObjectPool.Instance.ReturnObjectToPool(5,gameObject);
+         }
+     }
      public void BlueBulletDamage()
      {
          HpCount -= blueBullet.damageCount;

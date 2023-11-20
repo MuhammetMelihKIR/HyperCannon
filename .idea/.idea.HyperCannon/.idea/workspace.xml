@@ -5,21 +5,49 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="33cb44d6-27f9-4327-9b24-a719e3a8864a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/ThirdParty.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ThirdParty/Stylish Cannon Pack.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ThirdParty/Stylish Cannon Pack/Cannon Pack.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ThirdParty/Stylish Cannon Pack/Cannon Pack/10.FBX" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ThirdParty/Stylish Cannon Pack/Cannon Pack/10.FBX.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ThirdParty/Stylish Cannon Pack/Cannon Pack/3.FBX" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ThirdParty/Stylish Cannon Pack/Cannon Pack/3.FBX.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ThirdParty/Stylish Cannon Pack/Materials.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ThirdParty/Stylish Cannon Pack/Materials/Plane.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ThirdParty/Stylish Cannon Pack/Materials/Plane.mat.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.HyperCannon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HyperCannon/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3RD.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3RD/2D Casual UI.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3RD/2D Casual UI/Original Artwork.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3RD/2D Casual UI/Original Artwork/GUI.psd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3RD/2D Casual UI/Original Artwork/GUI.psd.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3RD/2D Casual UI/Sprite.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3RD/2D Casual UI/Sprite/GUI.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3RD/2D Casual UI/Sprite/GUI.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3RD/Stylish Cannon Pack.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3RD/Stylish Cannon Pack/Cannon Pack.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3RD/Stylish Cannon Pack/Cannon Pack/10.FBX" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3RD/Stylish Cannon Pack/Cannon Pack/10.FBX.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3RD/Stylish Cannon Pack/Cannon Pack/3.FBX" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3RD/Stylish Cannon Pack/Cannon Pack/3.FBX.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3RD/Stylish Cannon Pack/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3RD/Stylish Cannon Pack/Materials/Plane.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3RD/Stylish Cannon Pack/Materials/Plane.mat.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/RUNTIME/Scenes/GameScene/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RUNTIME/Scenes/GameScene/GameScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Bullets/BlueBullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Bullets/BlueBullet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Bullets/Bullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Bullets/Bullet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Bullets/RedBullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Bullets/RedBullet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Bullets/YellowBullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Bullets/YellowBullet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Cannons/Cannon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Cannons/Cannon.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Enemies/BlueEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Enemies/BlueEnemy.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Enemies/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Enemies/Enemy.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Enemies/RedEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Enemies/RedEnemy.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Enemies/YellowEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Enemies/YellowEnemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/EnemySpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/EnemySpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Managers/AudioManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Managers/AudioManager.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Managers/GameManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Managers/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RUNTIME/Scripts/Managers/UIManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Anton SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Anton SDF.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Electronic Highway Sign SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Electronic Highway Sign SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Oswald Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Oswald Bold SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Roboto-Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Roboto-Bold SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +148,9 @@
       <workItem from="1700037637510" duration="14166000" />
       <workItem from="1700319518410" duration="637000" />
       <workItem from="1700320179698" duration="4020000" />
-      <workItem from="1700395600963" duration="12972000" />
+      <workItem from="1700395600963" duration="13977000" />
+      <workItem from="1700429929904" duration="1037000" />
+      <workItem from="1700470850863" duration="7928000" />
     </task>
     <servers />
   </component>

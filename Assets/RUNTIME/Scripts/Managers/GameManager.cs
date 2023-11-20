@@ -15,9 +15,10 @@ public enum GameState
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    [SerializeField] GameState _gameState;
+    private GameState _gameState;
 
     public static Action<GameState> OnGameStateChanged;
+    public static Action OnGameLevelUpdate;
   
     public int gameLevelCount;
     private int _levelGoalCount;
@@ -37,24 +38,15 @@ public class GameManager : MonoBehaviour
     public BlueBullet blueBullet;
     public YellowBullet yellowBullet;
 
-
-    private void SetGameState(GameState gameState)
-    {
-        _gameState = gameState;
-    }
-
-    public bool IsGameState(GameState gameState)
-    {
-        return _gameState == gameState;
-    }
-    
-
     private void Awake()
     {
-        if (Instance==null)
+        if (Instance != null && Instance != this)
         {
-            Instance = this;
+            Destroy(gameObject);
+            return;
         }
+        Instance = this;
+        
         Init();
     }
     
@@ -69,11 +61,21 @@ public class GameManager : MonoBehaviour
         OnGameStateChanged -= SetGameState;
         Enemy.OnEnemyDie -= OnEnemiesKilled;
     }
+    
+    private void SetGameState(GameState gameState)
+    {
+        _gameState = gameState;
+    }
+
+    public bool IsGameState(GameState gameState)
+    {
+        return _gameState == gameState;
+    }
 
     private void Init()
     {
         gameLevelCount = 1;
-        _levelGoalCount = (50 * gameLevelCount);
+        _levelGoalCount = (10 * gameLevelCount);
         UIManager.Instance.enemiesKillsCountText.text = _enemiesKillsCount + " / " + (_levelGoalCount).ToString();
         UIManager.Instance.redButtonGoldText.text = _redButtonGoldCount.ToString();
         UIManager.Instance.redButtonLevelText.text = "LVL- " + _redButtonLevelCount.ToString(); 
@@ -91,7 +93,7 @@ public class GameManager : MonoBehaviour
         _enemiesKillsCount++;
         UIManager.Instance.enemiesKillsCountText.text = _enemiesKillsCount + " / " + (_levelGoalCount).ToString();
 
-        if (_enemiesKillsCount==_levelGoalCount)
+        if (_enemiesKillsCount == _levelGoalCount)
         {
             OnGameStateChanged?.Invoke(GameState.Win);
         }
@@ -102,29 +104,36 @@ public class GameManager : MonoBehaviour
     {
         gameLevelCount++;
         _enemiesKillsCount = 0;
-        _levelGoalCount = (50 * gameLevelCount);
+        _levelGoalCount = (10 * gameLevelCount);
         UIManager.Instance.enemiesKillsCountText.text = _enemiesKillsCount + " / " + (_levelGoalCount).ToString();
         UIManager.Instance.levelText.text = "LEVEL- " + gameLevelCount.ToString();
     }
 
+    #region CANVAS BUTTONS
+
     public void StartButton()
     {
-       OnGameStateChanged?.Invoke(GameState.InGame);
+        OnGameStateChanged?.Invoke(GameState.InGame);
        
     }
 
     public void NextLevelButton()
     {
-        OnGameStateChanged?.Invoke(GameState.InGame);
         UpdateGameLevel();
-        Debug.Log(gameLevelCount);
+        OnGameStateChanged?.Invoke(GameState.InGame);
+        OnGameLevelUpdate?.Invoke();
     }
 
     public void RestartGameButton()
     {
         SceneManager.LoadScene(0);
     }
-    
+
+    #endregion
+ 
+
+    #region LEVEL UP BUTTONS
+
     public void RedButtonGoldCountUpdate()
     {
         if (_goldCount>=_redButtonGoldCount)
@@ -170,4 +179,7 @@ public class GameManager : MonoBehaviour
         }
         
     }
+
+    #endregion
+    
 }

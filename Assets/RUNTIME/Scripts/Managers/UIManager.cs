@@ -1,4 +1,4 @@
-
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -6,11 +6,10 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
     
+    [Header("LEVEL VALUES")]
     public TextMeshProUGUI goldText;
-
     public TextMeshProUGUI enemiesKillsCountText;
     public TextMeshProUGUI levelText;
-    
     
     [Header("PANELS")] 
     public GameObject readyToStartPanel;
@@ -30,16 +29,20 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance==null)
+        if (Instance != null && Instance != this)
         {
-            Instance = this;
+            Destroy(gameObject);
+            return;
         }
+        Instance = this;
+        
         readyToStartPanel.SetActive(CloseAllPanelExceptThis());
     }
 
     private void OnEnable()
     {
         GameManager.OnGameStateChanged += UpdateUI;
+       
     }
 
     private void OnDisable()
@@ -67,12 +70,14 @@ public class UIManager : MonoBehaviour
                 losePanel.SetActive(CloseAllPanelExceptThis());
                
                 break;
-            
+
+            default:
+                throw new ArgumentOutOfRangeException(nameof(state), state, null);
         }
        
     }
     
-    bool CloseAllPanelExceptThis()
+    private bool CloseAllPanelExceptThis()
     {
         inGamePanel.SetActive(false);
         readyToStartPanel.SetActive(false);

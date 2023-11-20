@@ -7,7 +7,19 @@ public class RedEnemy :Enemy,IDamageableRedBullet,IDamageableBlueBullet
     public RedBullet redBullet;
     public BlueBullet blueBullet;
     
-
+   
+    private void Update()
+    {
+        if (GameManager.Instance.IsGameState(GameState.Win))
+        {
+            ObjectPool.Instance.ReturnObjectToPool(3,gameObject);
+        }
+        if (GameManager.Instance.IsGameState(GameState.Lose))
+        {
+            ObjectPool.Instance.ReturnObjectToPool(3,gameObject);
+        }
+    }
+    
     public void BlueBulletDamage()
     {
         HpCount -= blueBullet.damageCount; 
